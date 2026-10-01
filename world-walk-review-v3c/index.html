@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joseph world walk v3c living</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 18px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+video{width:100%;border-radius:8px;display:block;background:#ccc}
+</style></head><body><main>
+<h1>The worlds are alive</h1>
+<p class="lead">Four Kling o3 clips in Plnty (63 each, 252, balance 4,188), you walk fully in and out, no swap. Pastel VHS on top.</p>
+<div class="card"><h2>v3c, pastel VHS</h2>
+<video src="media/world-walk-v3c-vhs.mp4" autoplay muted loop playsinline controls></video></div>
+<div class="card"><h2>What each world did</h2><ul>
+<li class="good">Cloud: the sun rises out of the clouds</li>
+<li class="good">Museum: three people walk between the pictures</li>
+<li class="bad">Field: a red ram and sheep appear, but the kiss on the horizon does not read</li>
+<li class="bad">Painting: a ballerina jumps off the stairs, then it turns into a crowd of real looking dancers, no endless climb</li>
+<li class="bad">VHS is subtle in this first pass, can go much further</li></ul></div>
+<div class="card"><h2>Same film, no VHS</h2>
+<video src="media/world-walk-v3c-clean.mp4" muted playsinline controls preload="metadata"></video></div>
+<h2>What next?</h2>
+<div class="choices">
+<button class="c" data-v="REDO FIELD + PAINTING"><b>Redo the field and the painting (recommended)</b><span>Field: ram and ewe big and close, kissing. Painting: ballerinas painted, one simple loop. About 63 each, 126</span></button>
+<button class="c" data-v="STRONGER VHS"><b>Push the VHS look harder</b><span>0 credits</span></button>
+<button class="c" data-v="LOCK AS IS"><b>Lock it as it is</b><span>0 credits</span></button>
+</div>
+<textarea id="notes" placeholder="Notes"></textarea>
+<button id="copy">Copy my answer</button>
+<div id="out"></div>
+</main>
+<script>
+let pick='';document.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{document.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=b.dataset.v});
+document.getElementById('copy').onclick=async()=>{const t='WORLD WALK V3C: '+(pick||'(no pick)')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
