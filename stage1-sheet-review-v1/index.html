@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joseph character sheet - stage 1 review</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 18px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+</style></head><body><main>
+<h1>Your character sheet - 2 runs</h1>
+<p class="lead">Plnty, GPT Image 2, your 6 photos from today. 22 credits spent, balance 4,965. Tap a sheet to open it full size.</p>
+
+<div class="card"><h2>Run 01</h2>
+<a href="media/sheet-run01.jpg"><img src="media/sheet-run01.jpg" alt="Character sheet run 01"></a>
+<ul><li class="good">Cap on in every full body view, real open smile</li>
+<li class="bad">Hair wrong: full curls on top, your hairline is higher and thinner</li></ul>
+<p class="tag">Independent QA: PASS with fixes</p></div>
+
+<div class="card"><h2>Run 02</h2>
+<a href="media/sheet-run02.jpg"><img src="media/sheet-run02.jpg" alt="Character sheet run 02"></a>
+<ul><li class="good">Hair and face closest to you: high forehead, thin top, curls at the back</li>
+<li class="bad">Cap missing in the front full body and in 4 of 5 close-ups, weak smile, jeans too blue</li></ul>
+<p class="tag">Independent QA: FAIL on the brief</p></div>
+
+<h2>What next?</h2>
+<div class="choices">
+<button class="c" data-v="RUN 3 MERGE"><b>Run 3: merge them (recommended)</b><span>Run 01 layout and cap, run 02 hair and face, open smile, grey jeans. 11 credits, already approved.</span></button>
+<button class="c" data-v="LOCK RUN 01"><b>Lock run 01 as it is</b><span>Accept the fuller hair</span></button>
+<button class="c" data-v="LOCK RUN 02"><b>Lock run 02 as it is</b><span>Accept the missing cap</span></button>
+<button class="c" data-v="STOP, NEW DIRECTION"><b>Stop, I want something different</b><span>Write what in the notes</span></button>
+</div>
+<textarea id="notes" placeholder="Notes: what is right, what is wrong, anything about the look"></textarea>
+<button id="copy">Copy my answer</button>
+<div id="out"></div>
+</main>
+<script>
+let pick='';document.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{document.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=b.dataset.v});
+document.getElementById('copy').onclick=async()=>{const t='CHARACTER SHEET STAGE 1: '+(pick||'(no pick)')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
