@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joseph walk - stage 2 review</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 18px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+video{width:100%;border-radius:8px;display:block;background:#ccc}
+</style></head><body><main>
+<h1>Your character walks - stage 2</h1>
+<p class="lead">Plnty, Kling Omni Std. Your real measured step, worn by the run 01 character. 126 credits spent, balance 4,839. One earlier attempt failed inside Plnty and was refunded.</p>
+
+<div class="card"><h2>Your walk next to the character</h2>
+<video src="media/side-by-side-your-walk-vs-character.mp4" poster="media/poster.jpg" autoplay muted loop playsinline controls></video>
+<ul><li class="good">Same step, same timing: one step = 0.667 s in your footage and in the result, measured</li>
+<li class="good">Cap, plain pink tee, light grey jeans, cream clogs held for the whole 5 seconds</li>
+<li class="good">Walks in place on grey, camera locked: ready to be cut out and placed in the four worlds</li></ul></div>
+
+<div class="card"><h2>One step, looped 12 times</h2>
+<video src="media/loop-one-step-x12.mp4" autoplay muted loop playsinline controls></video>
+<ul><li class="good">The join between loops is smaller than the change between two ordinary frames, so it should not show</li>
+<li class="bad">A dark band at the back ankle in some frames, like a sock. Watch the back foot</li></ul></div>
+
+<div class="card"><h2>Face close-up (frame 40)</h2>
+<img src="media/face-crop-frame40.jpg" alt="Face close-up from the walk">
+<ul><li class="bad">Head tilts down to the floor. That comes from your footage, not from Plnty</li></ul>
+<p class="tag">Independent QA: PASS with fixes (ankle band, slight shadow on the floor that the cutout must handle)</p></div>
+
+<h2>What next?</h2>
+<div class="choices">
+<button class="c" data-v="LOCK, GO STAGE 3"><b>Lock this walk, cut it out (recommended)</b><span>Stage 3: Plnty remove-video-bg, about 17 credits by the price table, checked on the card first. Then I place it in the four worlds locally, zero credits.</span></button>
+<button class="c" data-v="LOCK, HEAD UP"><b>Good, but the head should look forward</b><span>Another Kling run, about 126 credits. I would lift the head in your footage first, locally</span></button>
+<button class="c" data-v="REDO"><b>Redo the walk</b><span>Write what is wrong in the notes</span></button>
+<button class="c" data-v="STOP"><b>Stop here</b><span>No more credits for now</span></button>
+</div>
+<textarea id="notes" placeholder="Notes: the face, the step, the clothes, anything"></textarea>
+<button id="copy">Copy my answer</button>
+<div id="out"></div>
+</main>
+<script>
+let pick='';document.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{document.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=b.dataset.v});
+document.getElementById('copy').onclick=async()=>{const t='WALK STAGE 2: '+(pick||'(no pick)')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
