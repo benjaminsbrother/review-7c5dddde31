@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joseph walk - wan run 01</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 18px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+video{width:100%;border-radius:8px;display:block;background:#ccc}
+</style></head><body><main>
+<h1>A human walk: wan-3-reference</h1>
+<p class="lead">Plnty, the character plus your real walk as "move like this". 150 credits, balance 4,689. No loop anywhere.</p>
+<div class="card"><h2>The clean part: 6.7 seconds</h2>
+<video src="media/wan-walk-clean-frames24-224.mp4" poster="media/poster.jpg" autoplay muted loop playsinline controls></video>
+<ul><li class="good">Natural heel to toe step, arms swing against the legs, no sliding, no shoulder jump</li>
+<li class="good">Face, beard, cap, plain pink tee, grey jeans, clogs all hold. Step 0.63 s, yours is 0.67 s</li>
+<li class="good">Stays centred on plain grey, feet not cropped: easy to cut out</li></ul>
+<p class="tag">This page loops the clip only so you can watch it. The film never loops it.</p></div>
+<div class="card"><h2>The full 10 seconds, with the fault</h2>
+<video src="media/wan-walk-full-10s.mp4" muted playsinline controls preload="metadata"></video>
+<ul><li class="bad">At 7.5 s the model dissolves him and turns him to face left. Everything after that is cut</li>
+<li class="bad">6.7 s clean, the film needs 11.7. Four worlds from it means some steps repeat between worlds (hidden under the wipes, but the same steps)</li></ul></div>
+<div class="card"><h2>Face (3 s)</h2><img src="media/face.jpg" alt="face">
+<p class="tag">Independent QA: PASS with fixes (cut before frame 225, trim the standing start)</p></div>
+<h2>What next?</h2>
+<div class="choices">
+<button class="c" data-v="ONE MORE 15 S"><b>One more run, 15 s, "never turns around" (recommended)</b><span>225 on the card. If it holds, one continuous walk covers the whole film. Keep this one as backup</span></button>
+<button class="c" data-v="LOCK THIS, GO CUTOUT"><b>Lock this one, cut it out</b><span>About 17 for the cutout, then the four worlds locally. Steps repeat between worlds</span></button>
+<button class="c" data-v="REDO"><b>Not human enough, redo</b><span>Write what is wrong</span></button>
+</div>
+<textarea id="notes" placeholder="Notes"></textarea>
+<button id="copy">Copy my answer</button>
+<div id="out"></div>
+</main>
+<script>
+let pick='';document.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{document.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=b.dataset.v});
+document.getElementById('copy').onclick=async()=>{const t='WALK WAN: '+(pick||'(no pick)')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
