@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tuscany drone orbit - draft review</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 18px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+video{width:100%;border-radius:8px;display:block;background:#ccc}
+.pair video{max-width:640px;margin:0 auto}
+</style></head><body><main>
+<h1>Tuscany drone orbit - the draft</h1>
+<p class="lead">Plnty video-restyler, Seedance 2.5, 480p draft, on our real-geometry guide render. 249 credits spent, balance 4,440. One continuous move, no stitched pieces.</p>
+
+<div class="card"><h2>The draft, 10 seconds</h2>
+<video src="media/draft-result.mp4" poster="media/poster.jpg" autoplay muted loop playsinline controls></video>
+<ul><li class="good">One house the whole way: stone villa, terracotta roofs, cypresses. It does not turn into a different villa like drone v2 did</li>
+<li class="good">The camera follows our path exactly. No stall, no jump (measured frame by frame)</li>
+<li class="bad">The first 1.5 s and the last 2.5 s were barely restyled. They still look like the rough computer render, with seams in the sky</li>
+<li class="bad">The pond is only a thin teal strip, not the angular pond. A yellow field was invented on the horizon at 1.5 s</li></ul>
+<p class="tag">Independent QA: PASS with fixes. Clean, realistic window is 2.0 to 7.5 s.</p></div>
+
+<div class="card pair"><h2>Our guide (left) and the result (right)</h2>
+<video src="media/guide-left-result-right.mp4" autoplay muted loop playsinline controls></video>
+<p class="tag">Watch the start and the end: the right side stays close to the rough guide there.</p></div>
+
+<div class="card"><h2>Only the good middle, slowed to fill the 10 s</h2>
+<video src="media/middle-2.0-7.5s-stretched-to-10s.mp4" autoplay muted loop playsinline controls></video>
+<ul><li class="good">All realistic: the house, then the vineyards and olives. The pond strip shows here</li>
+<li class="bad">The price: no rise from the two of you and no landing on the kiss. It becomes a cut to the drone over the house and a cut back to the kiss</li></ul>
+<p class="tag">Made locally, zero credits. Slowed to 0.55x with frame interpolation.</p></div>
+
+<div class="card"><h2>Every half second (top: guide, bottom: result)</h2>
+<img src="media/contact.jpg" alt="Guide and result every half second"></div>
+
+<div class="card"><h2>What next?</h2>
+<div class="choices">
+<button class="c" data-v="EDIT THE MIDDLE"><b>Cut the good middle into the song (recommended)</b><span>Zero credits. Your shot, then the drone over the house, then the kiss. I try soft dissolves at both joins and show you the full edit</span></button>
+<button class="c" data-v="RERUN DRAFT"><b>Run the draft again with a stronger prompt</b><span>249 credits again. Pond kept, no yellow field, restyle the first and last frames too. Honest odds: the ends may stay rough, because they are mostly sky and blur in our guide</span></button>
+<button class="c" data-v="FINISH 1080P"><b>Finish this draft in 1080p</b><span>Price shows only on the Finish button. I read it and ask before clicking. The rough ends stay rough, so it pairs with the first option</span></button>
+<button class="c" data-v="STOP"><b>Stop here</b><span>No more credits for now</span></button>
+</div>
+<textarea id="notes" placeholder="Notes: the house, the pond, the light, the joins, anything"></textarea>
+<button id="copy">Copy my answer</button>
+<div id="out"></div></div>
+</main>
+<script>
+let pick='';document.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{document.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=b.dataset.v});
+document.getElementById('copy').onclick=async()=>{const t='DRONE ORBIT DRAFT: '+(pick||'(no pick)')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
