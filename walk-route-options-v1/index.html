@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joseph walk - route options</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 18px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+video{width:100%;border-radius:8px;display:block;background:#ccc}
+</style></head><body><main>
+<h1>The walk: four routes</h1>
+<p class="lead">Researched in Blender, After Effects and every Plnty tool. Today: your full video failed in Kling twice (refunded, balance 4,839). Kling Omni only worked with a big, centred figure walking in place.</p>
+<div class="card"><h2>A. Plnty wan-3-reference (your B + your full video)</h2><img src="media/character.jpg" alt="">
+<ul><li class="good">One continuous 10 to 15 s clip, nothing loops, so no shoulder jump</li><li class="good">Image 1 = your locked character, Video 1 = your real walk, prompt: moves like Video 1</li><li class="bad">Copies the feel of your walk, not your exact step [Likely]</li><li class="bad">Face and clothes can drift over 15 s</li></ul><p class="tag">Card: 10 s = 150, 15 s = 225, plus a few credits for the reference video seconds [Likely]. All in Plnty, today.</p></div>
+<div class="card"><h2>B. Blender: your real step as a 3D loop, then Plnty paints the character on</h2><img src="media/your-step.jpg" alt="">
+<ul><li class="good">Keeps YOUR step exactly: pose tracked from your 62 clean frames</li><li class="good">A 3D rig has no posture drift, so a two step loop closes at zero. The shoulder cannot jump</li><li class="bad">1 to 2 days of local work first (free), then one Plnty restyle (Playblast source)</li><li class="bad">Restyle must hold the character on a mannequin [Likely fine, Kling did it today]</li></ul><p class="tag">Credits: 126 to 174 for the restyle. Blender 5.1 is installed.</p></div>
+<div class="card"><h2>C. After Effects</h2><img src="media/run01-frame.jpg" alt="">
+<ul><li class="good">Best as the final compositor for every route: the four worlds, parallax, foreground wipes, shadow. Free and scriptable</li><li class="bad">As the walk itself (cut out puppet): 3 to 5 days and it loses the photo real look. Not recommended</li><li class="bad">Patching today's loop: 36 joins in 18 steps, only 3 can hide behind the wipes</li></ul><p class="tag">Credits: 0.</p></div>
+<div class="card"><h2>D. Reshoot 15 to 20 s of you walking (treadmill or tripod far away)</h2><img src="media/your-step.jpg" alt="">
+<ul><li class="good">Your exact walk, fully natural, no loop anywhere</li><li class="bad">Needs 5 minutes of you on camera, and Kling still failed today on a small figure crossing the frame, so frame it big and centred</li></ul><p class="tag">Credits: about 252 for 10 s in Kling after the shoot.</p></div>
+<h2>Your pick</h2>
+<p class="lead">My recommendation: A now as a fast test (10 s, 150), and B in parallel as the sure way to your exact step. C finishes either one.</p>
+<div class="choices">
+<button class="c" data-v="A + B"><b>A now, B in parallel (recommended)</b><span>150 credits now, Blender work starts tonight, restyle later on its own yes</span></button>
+<button class="c" data-v="A ONLY"><b>A only</b><span>wan-3-reference, 10 s, 150 on the card</span></button>
+<button class="c" data-v="B ONLY"><b>B only</b><span>Blender first, credits only at the end</span></button>
+<button class="c" data-v="D RESHOOT"><b>I will reshoot the walk</b><span>Send me the shooting instructions</span></button>
+</div>
+<textarea id="notes" placeholder="Notes"></textarea>
+<button id="copy">Copy my answer</button>
+<div id="out"></div>
+</main>
+<script>
+let pick='';document.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{document.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=b.dataset.v});
+document.getElementById('copy').onclick=async()=>{const t='WALK ROUTE: '+(pick||'(no pick)')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
