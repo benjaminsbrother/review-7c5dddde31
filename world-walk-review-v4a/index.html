@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joseph world walk v4a thirds</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 18px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+video{width:100%;border-radius:8px;display:block;background:#ccc}
+</style></head><body><main>
+<h1>Thirds: you walk in the same place in every world</h1>
+<p class="lead">Middle third is yours: 640 px tall, feet on the lower third line, eye on every horizon. The worlds were moved and scaled around you. 0 credits.</p>
+<div class="card"><h2>The four worlds on the thirds (pink lines)</h2><img src="media/thirds.png" alt="thirds"></div>
+<div class="card"><h2>v4a, pastel VHS</h2>
+<video src="media/world-walk-v4a-vhs.mp4" autoplay muted loop playsinline controls></video>
+<ul><li class="good">Same height, same size, same speed in all four worlds</li>
+<li class="good">Tied into each picture: your colour pulled toward each world, softness matched, light wrap at your edges, contact shadow</li>
+<li class="good">In the painting you are painted too (oil filter on you only)</li>
+<li class="bad">Cloud and museum: the clips end above the frame bottom, so the lower third is a smear. The plates were never composed for thirds</li>
+<li class="bad">Field: the ram and sheep still grow out of nothing</li></ul></div>
+<h2>The fix, all in Plnty</h2>
+<p class="lead">Recompose each PLATE to thirds first, let Plnty fill the missing lower third and put the animals in the field from the first frame, then animate from that frame. Per world about 11 (image) + 63 (Kling o3, star prompt), four worlds about 296. Card read before every run.</p>
+<div class="choices">
+<button class="c" data-v="GO ALL FOUR"><b>Go, all four worlds (recommended)</b><span>About 296</span></button>
+<button class="c" data-v="FIELD + MUSEUM FIRST"><b>Field and museum first</b><span>About 148, the two worst</span></button>
+<button class="c" data-v="STOP"><b>Stop here</b><span>0</span></button>
+</div>
+<textarea id="notes" placeholder="Notes"></textarea>
+<button id="copy">Copy my answer</button>
+<div id="out"></div>
+</main>
+<script>
+let pick='';document.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{document.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');pick=b.dataset.v});
+document.getElementById('copy').onclick=async()=>{const t='WORLD WALK V4A: '+(pick||'(no pick)')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
