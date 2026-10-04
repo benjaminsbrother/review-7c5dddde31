@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tuscany duet - paper sky, three answers</title>
+<style>
+:root{--ink:#1b1b1b;--q:#6b6b6b;--bg:#f4f2ee;--acc:#b5455a}
+*{box-sizing:border-box}body{margin:0;font:16px/1.45 -apple-system,system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+main{max-width:900px;margin:0 auto;padding:20px 14px 60px}
+h1{font-size:22px;margin:4px 0 6px}p.lead{color:var(--q);margin:0 0 18px}
+.card{background:#fff;border-radius:14px;padding:12px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.card h2{font-size:18px;margin:2px 4px 8px}.card img{width:100%;border-radius:8px;display:block}
+.tag{font-size:13px;color:var(--q);margin:8px 4px 0}
+ul{margin:6px 0 0 20px;padding:0}li{margin:2px 0}
+.good{color:#2e7d4f}.bad{color:var(--acc)}
+.choices{display:grid;gap:10px;margin:8px 0 6px}
+button.c{font:inherit;text-align:left;padding:14px;border:2px solid #d6d2ca;border-radius:12px;background:#fff}
+button.c.on{border-color:var(--acc);background:#fbeef1}
+button.c b{display:block}button.c span{color:var(--q);font-size:14px}
+textarea{width:100%;min-height:110px;font:inherit;padding:10px;border-radius:10px;border:1px solid #ccc}
+#copy{margin-top:10px;width:100%;padding:14px;font:inherit;font-weight:600;border:0;border-radius:12px;background:var(--ink);color:#fff}
+#out{font-size:13px;color:var(--q);white-space:pre-wrap;margin-top:8px}
+video{width:100%;max-width:420px;margin:0 auto;border-radius:8px;display:block;background:#ccc}
+</style></head><body><main>
+<h1>Paper sky above the two of you</h1>
+<p class="lead">Your idea: paper birds, clouds, angels peeking out. The clouds slide apart on the kiss and show the old couple at the long table with the whole family. Three taps and Codex starts the paper pieces. Zero credits so far, zero planned.</p>
+
+<div class="card"><h2>Proof 1: the real sky comes off, for free</h2>
+<video src="media/sky-key-test-10s.mp4" autoplay muted loop playsinline controls></video>
+<ul><li class="good">The whole 10 seconds, frame 27 to the kiss. The orange card is where the paper sky will go</li>
+<li class="good">Hair, sunglasses, the guitar head and the gap between you two hold. Made on the Mac, nothing uploaded anywhere</li>
+<li class="bad">Still rough: a thin pale halo around both heads, ragged edges on the tree, a few sky specks. That is the final edge pass, not a blocker</li></ul>
+<p class="tag">The far hills got taken with the sky in this test. I will keep the real hills and trees unless you say otherwise.</p></div>
+
+<div class="card"><h2>First and last frame, before and after</h2>
+<img src="media/sky-key-frames-27-and-326.jpg" alt="Frame 27 and frame 326, real sky and keyed sky"></div>
+
+<div class="card"><h2>1. The style source</h2>
+<img src="media/style-b-paper-theater.jpg" alt="Itach Paper Theater B frame">
+<p class="tag">Your locked Paper Theater B frame from איתך. It is a night room with bulbs. Your sky is Tuscan noon, so I would take only the paper itself: cut card, visible edges, blue, cream, terracotta. Not the night light.</p>
+<div class="choices" data-q="STYLE">
+<button class="c" data-v="B FRAME, PAPER ONLY, DAYLIGHT"><b>Yes, this paper, in daylight (recommended)</b><span>Same cut card and colours, bright noon light to match your footage</span></button>
+<button class="c" data-v="B FRAME AS IS"><b>Yes, exactly as it is</b><span>Including the warm night mood. Will fight the sunny footage</span></button>
+<button class="c" data-v="OTHER STYLE"><b>No, a different paper style</b><span>Write which one in the notes</span></button>
+</div></div>
+
+<div class="card"><h2>2. The family table</h2>
+<p class="tag" style="margin-top:0">The Last Supper layout is strong: one long table, everyone facing us, the old couple in the middle. The risk: many people read that painting as a farewell, the last meal before a death. On a wedding kiss that can land wrong.</p>
+<div class="choices" data-q="TABLE">
+<button class="c" data-v="LAST SUPPER, AS I SAID"><b>Last Supper, as I said</b><span>Quote the painting openly. Strong, and some will read it as goodbye</span></button>
+<button class="c" data-v="LONG TABLE, NO QUOTE"><b>Same long table, without quoting the painting</b><span>Frontal, symmetric, old couple in the centre, kids climbing, grandkids on laps. Feels like a feast, not a farewell</span></button>
+</div></div>
+
+<div class="card"><h2>3. The family figures</h2>
+<div class="choices" data-q="FIGURES">
+<button class="c" data-v="NEAR BLACK SILHOUETTES"><b>Near-black paper silhouettes (recommended)</b><span>Like the B frame. Reads clearly when it is small above your heads on a phone</span></button>
+<button class="c" data-v="COLOURED PAPER"><b>Coloured paper</b><span>Warmer and more festive. Harder to read at small size</span></button>
+</div>
+<p class="tag">Either way: no faces, soft amorphous shapes, as you asked.</p></div>
+
+<div class="card"><h2>Notes, then copy</h2>
+<textarea id="notes" placeholder="Anything: the angels, the birds, how fast the clouds open, the hills"></textarea>
+<button id="copy">Copy my answers</button>
+<div id="out"></div></div>
+</main>
+<script>
+const picks={};document.querySelectorAll('.choices').forEach(g=>g.querySelectorAll('button.c').forEach(b=>b.onclick=()=>{g.querySelectorAll('button.c').forEach(x=>x.classList.remove('on'));b.classList.add('on');picks[g.dataset.q]=b.dataset.v}));
+document.getElementById('copy').onclick=async()=>{const t='PAPER SKY: STYLE='+(picks.STYLE||'-')+' | TABLE='+(picks.TABLE||'-')+' | FIGURES='+(picks.FIGURES||'-')+'\nNotes: '+(document.getElementById('notes').value||'-');document.getElementById('out').textContent=t;try{await navigator.clipboard.writeText(t);document.getElementById('copy').textContent='Copied - paste it to Claude'}catch(e){document.getElementById('copy').textContent='Select the text below and copy'}};
+</script></body></html>
