@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Vox moves - 10 references</title>
+<style>
+body{margin:0;background:#f4eee3;color:#172842;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.45}
+main{max-width:640px;margin:0 auto;padding:18px 14px 60px}
+h1{font-size:26px;margin:8px 0 6px}
+h2{font-size:20px;margin:34px 0 10px}
+.lead{margin:0 0 18px;font-size:15px}
+.card{background:#fffaf0;border:1px solid #d9cfba;border-radius:14px;padding:14px;margin:16px 0}
+.num{display:inline-block;background:#172842;color:#f4eee3;border-radius:999px;padding:2px 10px;font-weight:700;font-size:14px}
+.series{font-weight:700;font-size:16px;margin:8px 0 10px}
+.frame{position:relative;width:100%;aspect-ratio:16/9;background:#172842;border-radius:10px;overflow:hidden}
+.frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.lab{font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin:12px 0 2px;color:#8a5a1e}
+.card p{margin:0;font-size:15px}
+.btns{display:flex;gap:8px;margin-top:14px}
+.btns button{flex:1;min-height:48px;font-size:16px;font-weight:700;border-radius:10px;border:2px solid #172842;background:#fffaf0;color:#172842}
+.btns button.on{background:#172842;color:#f4eee3}
+ol.rules{padding-left:22px;margin:0}
+ol.rules li{margin:6px 0;font-size:15px}
+textarea{width:100%;box-sizing:border-box;min-height:120px;font:inherit;font-size:16px;padding:10px;border-radius:10px;border:2px solid #172842;background:#fffaf0;color:#172842}
+#copy{width:100%;min-height:52px;margin-top:10px;font-size:17px;font-weight:700;border-radius:10px;border:0;background:#172842;color:#f4eee3}
+#msg{font-size:14px;margin-top:8px;min-height:20px}
+.note{font-size:13px;opacity:.8}
+</style>
+</head>
+<body>
+<main>
+<h1>How Vox moves - 10 references</h1>
+<p class="lead">Ten short moments from official Vox videos, played from YouTube at the exact second. Watch each one, then tap what you think. Sound on if you like.</p>
+<div id="cards"></div>
+
+<h2>The motion rules we will follow</h2>
+<ol class="rules">
+<li>Hard cuts only. Nothing dissolves.</li>
+<li>A graphic may run 10 seconds or more, if something inside keeps changing.</li>
+<li>Push-ins on flat scans are small and slow: 2 to 5 percent over 3 to 7 seconds.</li>
+<li>A snap push to a detail is fast and eased out: 12 to 15 frames.</li>
+<li>Highlight bar wipes in 0.3 to 0.5 seconds, then holds 3 to 4 seconds. Yellow is the common colour.</li>
+<li>Label chips pop in over about 3 frames, no bounce, and hold 2.5 to 3.5 seconds.</li>
+<li>Arrows draw along their path, tail to head, about 1 second each, head last.</li>
+<li>Counters and typed text ease. Typing runs about 11 characters per second.</li>
+<li>No burned word captions. Labels, headlines and quoted documents only.</li>
+<li>Every graphic sits on a texture: paper, desk, grain. Never a bare colour.</li>
+<li>Stacked photo panels pop in staggered, about 0.15 seconds apart. Not sliding.</li>
+<li>One accent colour per piece, matched to the subject.</li>
+</ol>
+
+<h2>Your verdict</h2>
+<textarea id="notes" placeholder="Notes: what to keep, what to drop, what to try first"></textarea>
+<button id="copy" type="button">Copy verdict</button>
+<div id="msg"></div>
+<p class="note">Videos play from YouTube. Nothing from Vox is stored on this page.</p>
+</main>
+<script>
+var REFS=[
+{id:"2IBxAGXhBxk",s:60,e:74,series:"Missing Chapter - series trailer",title:"Newspaper and photo clipping collage",
+ watch:"At 4 seconds a hard cut to a newspaper front page, then at 6 seconds a push down and in on a flat scan, easing out. No parallax, the push does all the work.",
+ fit:"Beat 2, paper card push through. Beat 3, document push-in."},
+{id:"UGqWRyBCHhw",s:64,e:78,series:"Missing Chapter - Native American children",title:"Map on a table, red territory shrinking",
+ watch:"Camera locked. Hands smooth a map, then a year counter runs 1776 to 1879 with a slow-fast-slow ease while the red shape shrinks in sync.",
+ fit:"Beat 4, directions spreading out, and beat 6, before and after driven by a counter."},
+{id:"UGqWRyBCHhw",s:84,e:98,series:"Missing Chapter - Native American children",title:"Highlighter on a real document",
+ watch:"At about 3.5 seconds a very fast push lands on a tight crop, and the yellow highlight bar is already there when it lands. Then a long calm hold.",
+ fit:"Beat 3, document push-in with highlight bar. Beat 5, highlight and sticker."},
+{id:"5HRU5yonyK8",s:22,e:36,series:"Vox Darkroom - Cuban missile crisis",title:"Hand-drawn red arrows and circles on photos",
+ watch:"A red date chip pops in over 3 frames, then three red arrows draw themselves one after another, tail to head, and a loop circles a detail.",
+ fit:"Beat 5, sticker chip. Beat 10, labels and arrows on layers."},
+{id:"qWIVSmx0zPE",s:78,e:92,series:"Vox Almanac - war poster",title:"Newspaper highlight and stacked photo panels",
+ watch:"A yellow bar swipes across a headline in 0.3 seconds. Then four or five small photos pop onto black, one after another, with even gutters.",
+ fit:"Beat 4, stacked panels. Beat 3, highlight bar."},
+{id:"fXdBZWyiSLA",s:60,e:74,series:"Vox Almanac - Game of Life",title:"Top-down hands on a dark spotlit surface",
+ watch:"One locked take for 8 seconds. A box slides in, cards drop around the board at human speed, and the corners fall to black.",
+ fit:"Beat 2, paper card landing on a surface. Beat 9, the hands."},
+{id:"cUBg6Qp_N98",s:64,e:78,series:"Vox Atlas - Strait of Hormuz",title:"Map lines draw themselves",
+ watch:"No cuts for 14 seconds. A dashed route draws, a cream band grows at steady speed while the camera pulls back, then it splits into several lines, each a little behind the last.",
+ fit:"Beat 7, a line drawn from the chat line to the numbers 834 to 60. Useful for any split into strands."},
+{id:"e31fNccOQSE",s:8,e:20,series:"Vox Almanac - comic book font",title:"Highlight bar on a table row, typed headline",
+ watch:"Rows of a ranked list fill in half a second apart, then a yellow bar wipes across row two at about 6 seconds and holds. Then a hard cut into fast snap crops.",
+ fit:"Beat 3, the highlight sweep. Beat 5."},
+{id:"kg18CwWeMnc",s:14,e:26,series:"Vox Atlas - Nevada ghost towns",title:"Typed coordinates and a paper-textured map",
+ watch:"Coordinates type on at about 11 characters per second, then the name slides up. After the cut the map pushes in 4 times, dots pop in, an arrow draws, a small label fades in.",
+ fit:"Beats 1 and 13, typed text over a moving plate. Beat 11, arrow and chip. The paper texture is the lesson."},
+{id:"7G2lEMberCw",s:10,e:22,series:"Vox Borders - series trailer",title:"Collage title sequence with compass, maps, type",
+ watch:"Three very fast shots of 0.1 to 0.4 seconds build the title, then shots slow down. Antique map paper with fold lines, and a spin-blur push as the transition.",
+ fit:"Beats 1 and 13, a title card if we want one. Beat 11, a sticker with graphic geometry."}
+];
+var KEY="voxrefs-v1";
+var state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(x){state={}}
+var CH=["Yes, this","Maybe","No"];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(x){}}
+function el(t,c,h){var n=document.createElement(t);if(c)n.className=c;if(h!==undefined)n.textContent=h;return n}
+var root=document.getElementById("cards");
+REFS.forEach(function(r,i){
+ var n=i+1,card=el("div","card");
+ card.appendChild(el("span","num",String(n)));
+ card.appendChild(el("div","series",r.series+": "+r.title));
+ var f=el("div","frame"),ifr=document.createElement("iframe");
+ ifr.src="https://www.youtube-nocookie.com/embed/"+r.id+"?start="+r.s+"&end="+r.e+"&rel=0&playsinline=1";
+ ifr.title="Reference "+n;ifr.loading="lazy";ifr.allowFullscreen=true;
+ ifr.setAttribute("allow","accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen");
+ ifr.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
+ f.appendChild(ifr);card.appendChild(f);
+ card.appendChild(el("div","lab","What to watch"));card.appendChild(el("p","",r.watch));
+ card.appendChild(el("div","lab","Where it goes in our film"));card.appendChild(el("p","",r.fit));
+ var b=el("div","btns");
+ CH.forEach(function(c){
+  var bt=el("button","",c);bt.type="button";
+  if(state[n]===c)bt.className="on";
+  bt.onclick=function(){state[n]=(state[n]===c?"":c);save();
+   Array.prototype.forEach.call(b.children,function(x){x.className=(state[n]===x.textContent?"on":"")})};
+  b.appendChild(bt)});
+ card.appendChild(b);root.appendChild(card);
+});
+var notes=document.getElementById("notes"),msg=document.getElementById("msg");
+try{notes.value=localStorage.getItem(KEY+"-notes")||""}catch(x){}
+notes.oninput=function(){try{localStorage.setItem(KEY+"-notes",notes.value)}catch(x){}};
+function verdict(){
+ var L=["Vox refs - verdict"];
+ REFS.forEach(function(r,i){L.push((i+1)+": "+(state[i+1]||"no answer"))});
+ L.push("Notes: "+(notes.value||"none"));return L.join("\n");
+}
+document.getElementById("copy").onclick=function(){
+ var t=verdict();
+ function fallback(){var old=notes.value;notes.value=t;notes.focus();notes.select();
+  try{document.execCommand("copy");msg.textContent="Copied (or selected). Paste it to Claude."}catch(x){msg.textContent="Text is selected in the box. Copy it by hand."}}
+ if(navigator.clipboard&&navigator.clipboard.writeText){
+  navigator.clipboard.writeText(t).then(function(){msg.textContent="Copied. Paste it to Claude."},fallback);
+ }else fallback();
+};
+</script>
+</body>
+</html>
